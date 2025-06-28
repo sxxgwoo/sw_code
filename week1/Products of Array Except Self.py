@@ -33,20 +33,20 @@ List -> list 소문자로 변경해야 오류 안뜸
 '''
 class Solution:
 
-    # # Brutal Force
-    # def productExceptSelf(self, nums: list[int]) -> list[int]:
-    #     n = len(nums)
-    #     res = []
-    #     for i in range(n):
-    #         prod = 1
-    #         for j in range(n):
-    #             if i == j:
-    #                 continue
-    #             prod *= nums[j]
-    #         res.append(prod)
-    #     return res
+    #1) Brutal Force
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
+        n = len(nums)
+        res = []
+        for i in range(n):
+            prod = 1
+            for j in range(n):
+                if i == j:
+                    continue
+                prod *= nums[j]
+            res.append(prod)
+        return res
     
-    # prefix & suffix
+    #2) prefix & suffix
     def productExceptSelf(self, nums: list[int]) -> list[int]:
         res = [1] * (len(nums))
 
