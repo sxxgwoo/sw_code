@@ -33,7 +33,7 @@ class Solution:
                 continue
             return i
         
-    # Brute Force
+    # 2) Brute Force
     def firstMissingPositive(self, nums: list[int]) -> int:
         missing = 1
         while True:
@@ -47,7 +47,7 @@ class Solution:
                 return missing
             missing += 1
 
-    # Boolean Array
+    # 3) Boolean Array
     def firstMissingPositive(self, nums: list[int]) -> int:
         '''
         예시 1: nums = [3, 4, -1, 1]
