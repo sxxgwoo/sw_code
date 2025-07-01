@@ -24,7 +24,7 @@ for i in range(4, 2, -1):  # i는 4, 3 순서로 반복됨
 '''
 
 class Solution:
-    #array
+    # 1) array
     def reverseString(self, s: list[str]) -> None:
         """
         Do not return anything, modify s in-place instead.
@@ -35,7 +35,7 @@ class Solution:
         for i in range(len(s)):
             s[i] = tmp[i]
 
-    # two pointers
+    # 2)** two pointers
     def reverseString(self, s: list[str]) -> None:
         """
         Do not return anything, modify s in-place instead.
