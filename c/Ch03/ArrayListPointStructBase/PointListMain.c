@@ -11,7 +11,7 @@ int main(void)
 
 	ListInit(&list);
 
-	/*** 4°³ÀÇ µ¥ÀÌÅÍ ÀúÀå ***/
+	/*** 4ê°œì˜ ë°ì´í„° ì €ì¥ ***/
 	ppos = (Point*)malloc(sizeof(Point));
 	SetPointPos(ppos, 2, 1);
 	LInsert(&list, ppos);
@@ -28,8 +28,8 @@ int main(void)
 	SetPointPos(ppos, 3, 2);
 	LInsert(&list, ppos);
 
-	/*** ÀúÀåµÈ µ¥ÀÌÅÍÀÇ Ãâ·Â ***/
-	printf("ÇöÀç µ¥ÀÌÅÍÀÇ ¼ö: %d \n", LCount(&list));
+	/*** ì €ì¥ëœ ë°ì´í„°ì˜ ì¶œë ¥ ***/
+	printf("í˜„ì¬ ë°ì´í„°ì˜ ìˆ˜: %d \n", LCount(&list));
 
 	if(LFirst(&list, &ppos))
 	{
@@ -40,7 +40,7 @@ int main(void)
 	}
 	printf("\n");
 
-	/*** xpos°¡ 2ÀÎ ¸ğµç µ¥ÀÌÅÍ »èÁ¦ ***/
+	/*** xposê°€ 2ì¸ ëª¨ë“  ë°ì´í„° ì‚­ì œ ***/
 	compPos.xpos=2;
 	compPos.ypos=0;
 
@@ -62,8 +62,8 @@ int main(void)
 		}
 	}
 
-	/*** »èÁ¦ ÈÄ ³²Àº µ¥ÀÌÅÍ ÀüÃ¼ Ãâ·Â ***/
-	printf("ÇöÀç µ¥ÀÌÅÍÀÇ ¼ö: %d \n", LCount(&list));
+	/*** ì‚­ì œ í›„ ë‚¨ì€ ë°ì´í„° ì „ì²´ ì¶œë ¥ ***/
+	printf("í˜„ì¬ ë°ì´í„°ì˜ ìˆ˜: %d \n", LCount(&list));
 
 	if(LFirst(&list, &ppos))
 	{

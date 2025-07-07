@@ -7,13 +7,13 @@ typedef struct _point
 	int ypos;
 } Point;
 
-// Point º¯¼öÀÇ xpos, ypos °ª ¼³Á¤
+// Point ë³€ìˆ˜ì˜ xpos, ypos ê°’ ì„¤ì •
 void SetPointPos(Point * ppos, int xpos, int ypos);
 
-// Point º¯¼öÀÇ xpos, ypos Á¤º¸ Ãâ·Â 
+// Point ë³€ìˆ˜ì˜ xpos, ypos ì •ë³´ ì¶œë ¥
 void ShowPointPos(Point * ppos);
 
-// µÎ Point º¯¼öÀÇ ºñ±³
+// ë‘ Point ë³€ìˆ˜ì˜ ë¹„êµ
 int PointComp(Point * pos1, Point * pos2); 
 
 #endif

@@ -1,23 +1,18 @@
+// Hanoi Tower
 #include <stdio.h>
 
-void HanoiTowerMove(int num, char from, char by, char to)
-{
-	if(num==1)    // ÀÌµ¿ÇÒ ¿ø¹İÀÇ ¼ö°¡ 1°³¶ó¸é
-	{
-		printf("¿ø¹İ1À» %c¿¡¼­ %c·Î ÀÌµ¿ \n", from, to);
-	}
-	else
-	{   
-		HanoiTowerMove(num-1, from, to, by);    // 3´Ü°è Áß 1´Ü°è
-		printf("¿ø¹İ%dÀ»(¸¦) %c¿¡¼­ %c·Î ÀÌµ¿ \n", num, from, to);  // 3´Ü°è Áß 2´Ü°è
-		HanoiTowerMove(num-1, by, from, to);    // 3´Ü°è Áß 3´Ü°è
-	}
+void HanoiTowerMove(int num, char from, char by, char to){
+    if(num==1){
+        printf("ì›ë°˜1ì„ %cì—ì„œ %cë¡œ ì´ë™\n", from, to);
+    }
+
+    else{
+        HanoiTowerMove(num-1, from, to, by);
+        printf("ì›ë°˜%dì„(ë¥¼) %cì—ì„œ %cë¡œ ì´ë™\n", num, from, to);
+        HanoiTowerMove(num-1, by, from, to);
+    }
 }
 
-
-int main(void)
-{
-	// ¸·´ëAÀÇ ¿ø¹İ 3°³¸¦ ¸·´ëB¸¦ °æÀ¯ÇÏ¿© ¸·´ëC·Î ¿Å±â±â
-	HanoiTowerMove(3, 'A', 'B', 'C');
-	return 0;
+int main(){
+    HanoiTowerMove(3,'A','B','C');
 }
