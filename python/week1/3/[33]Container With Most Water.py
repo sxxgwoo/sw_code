@@ -1,9 +1,25 @@
-# container with most water
-# maximum amount of water a container can store
-# Two Pointers
+'''
+Container With Most Water
+
+You are given an integer array heights where heights[i] represents the height of the ith bar.
+
+You may choose any two bars to form a container. Return the maximum amount of water a container can store.
+
+Example 1:
+
+Input: height = [1,7,2,5,4,7,3,6]
+
+Output: 36
+
+Example 2:
+
+Input: height = [2,2,2]
+
+Output: 4
+'''
 from typing import List
 
-# Solution 1
+# Brute Force
 def maxArea(heights: List[int]) -> int:
     res = 0
     for i in range(len(heights)):
@@ -11,7 +27,7 @@ def maxArea(heights: List[int]) -> int:
             res = max(res, min(heights[i], heights[j]) * (j - i))
     return res
 
-# Solution 2
+# Two Pointers
 def maxArea(heights: List[int]) -> int:
     l, r = 0, len(heights) - 1
     res = 0

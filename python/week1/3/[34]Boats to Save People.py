@@ -1,7 +1,34 @@
-# Boats to Save People
-# each boat carries at most two people
-# minimum number of boats to carry every person
-# Two Pointers, Counting Sort
+'''
+Boats to Save People
+
+You are given an integer array people where people[i] is the weight of the ith person, and an infinite number of boats where each boat can carry a maximum weight of limit. Each boat carries at most two people at the same time, provided the sum of the weight of those people is at most limit.
+
+Return the minimum number of boats to carry every given person.
+
+Example 1:
+
+Input: people = [5,1,4,2], limit = 6
+
+Output: 2
+
+Explanation:
+
+First boat [5,1].
+Second boat [4,2].
+
+Example 2:
+
+Input: people = [1,3,2,3,2], limit = 3
+
+Output: 4
+
+Explanation:
+
+First boat [3].
+Second boat [3].
+Third boat [1,2].
+Fourth boat [2].
+'''
 from typing import List
 
 def merge(left, right):
@@ -31,7 +58,7 @@ def merge_sort(arr):
 
     return merge(left, right)
 
-# Solution 1
+# Sorting + Two Pointers
 def numRescueBoats(people: List[int], limit: int) -> int:
     people[:] = merge_sort(people)
     res, l, r = 0, 0, len(people) - 1
@@ -43,7 +70,7 @@ def numRescueBoats(people: List[int], limit: int) -> int:
             l += 1
     return res
 
-# Solution 2
+# Counting Sort
 def numRescueBoats(people: List[int], limit: int) -> int:
     m = max(people)
     count = [0] * (m + 1)

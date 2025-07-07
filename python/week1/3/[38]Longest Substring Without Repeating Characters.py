@@ -1,8 +1,26 @@
-# Longest Substring Without Repeating Characters
-# length of the longest substring without duplicate characters
-# Sliding Window Variable Size
+'''
+Longest Substring Without Repeating Characters
 
-# Solution 1
+Given a string s, find the length of the longest substring without duplicate characters.
+
+A substring is a contiguous sequence of characters within a string.
+
+Example 1:
+
+Input: s = "zxyzxyz"
+
+Output: 3
+
+Explanation: The string "xyz" is the longest without duplicate characters.
+
+Example 2:
+
+Input: s = "xxxx"
+
+Output: 1
+'''
+
+# Brute Force
 def lengthOfLongestSubstring(s: str) -> int:
     res = 0
     for i in range(len(s)):
@@ -14,7 +32,7 @@ def lengthOfLongestSubstring(s: str) -> int:
         res = max(res, len(charSet))
     return res
 
-# Solution 2
+# Sliding Window
 def lengthOfLongestSubstring(s: str) -> int:
     charSet = set()
     l = 0

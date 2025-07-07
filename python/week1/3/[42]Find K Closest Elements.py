@@ -1,9 +1,28 @@
-# Find K Closest Elements
-# return the k closest integers to x in the array
-# Sliding Window Variable Size
+'''
+Find K Closest Elements
+
+You are given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array. The result should also be sorted in ascending order.
+
+An integer a is closer to x than an integer b if:
+
+|a - x| < |b - x|, or
+|a - x| == |b - x| and a < b
+
+Example 1:
+
+Input: arr = [2,4,5,8], k = 2, x = 6
+
+Output: [4,5]
+
+Example 2:
+
+Input: arr = [2,3,4], k = 3, x = 1
+
+Output: [2,3,4]
+'''
 from typing import List
 
-# Solution 1
+# Two Pointers
 def findClosestElements(arr: List[int], k: int, x: int) -> List[int]:
     l, r = 0, len(arr) - 1
     while r - l >= k:
@@ -14,7 +33,7 @@ def findClosestElements(arr: List[int], k: int, x: int) -> List[int]:
     
     return arr[l: r + 1]
 
-# Solution 2
+# Binary Search + Two Pointers
 def findClosestElements(arr: List[int], k: int, x: int) -> List[int]:
     l, r = 0, len(arr) - 1
     while l < r:
