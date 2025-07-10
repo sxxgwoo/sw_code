@@ -42,7 +42,7 @@ class Solution:
             if c == "+":
                 stack.append(stack.pop() + stack.pop())
             elif c == "-":
-                a, b = stack.pop(), stack.pop()
+                a, b = stack.pop(), stack.pop() # 굳이 이렇게하는 이유-> 순서가 다르기 때문
                 stack.append(b - a)
             elif c == "*":
                 stack.append(stack.pop() * stack.pop())
