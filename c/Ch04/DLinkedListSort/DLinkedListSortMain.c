@@ -1,63 +1,69 @@
 #include <stdio.h>
 #include "DLinkedList.h"
 
+// ì •ë ¬ ê¸°ì¤€ í•¨ìˆ˜: ì˜¤ë¦„ì°¨ìˆœ
 int WhoIsPrecede(int d1, int d2)
 {
-	if(d1 < d2)
-		return 0;    // d1ÀÌ Á¤·Ä ¼ø¼­»ó ¾Õ¼±´Ù.
+	if (d1 < d2)
+		return 0;    // d1ì´ ì •ë ¬ ìˆœì„œìƒ ì•žì„ ë‹¤ (ìžë¦¬ ê·¸ëŒ€ë¡œ ìœ ì§€)
 	else
-		return 1;    // d2°¡ Á¤·Ä ¼ø¼­»ó ¾Õ¼­°Å³ª °°´Ù.
+		return 1;    // d2ê°€ d1ë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ìœ¼ë©´, d2ê°€ ë¨¼ì € ì˜¤ë„ë¡ ì •ë ¬
 }
 
 int main(void)
 {
-	// ListÀÇ »ý¼º ¹× ÃÊ±âÈ­  ////////////
+	// ë¦¬ìŠ¤íŠ¸ ìƒì„± ë° ì´ˆê¸°í™”
 	List list;
 	int data;
-	ListInit(&list);
+	ListInit(&list);  // ë‚´ë¶€ì ìœ¼ë¡œ ë”ë¯¸ í—¤ë” ë…¸ë“œ ìƒì„±
 
+	// ì •ë ¬ ê¸°ì¤€ ì„¤ì • (ì˜¤ë¦„ì°¨ìˆœ)
 	SetSortRule(&list, WhoIsPrecede);
 
-	// 5°³ÀÇ µ¥ÀÌÅÍ ÀúÀå  ///////////////
-	LInsert(&list, 11);  LInsert(&list, 11);
-	LInsert(&list, 22);  LInsert(&list, 22);
+	// ë°ì´í„° ì‚½ìž… (ì •ë ¬ ê¸°ì¤€ì— ë”°ë¼ ìžë™ ì •ë ¬ë¨)
+	LInsert(&list, 11);  
+	LInsert(&list, 11);
+	LInsert(&list, 22);  
+	LInsert(&list, 22);
 	LInsert(&list, 33);
 
-	// ÀúÀåµÈ µ¥ÀÌÅÍÀÇ ÀüÃ¼ Ãâ·Â ////////////
-	printf("ÇöÀç µ¥ÀÌÅÍÀÇ ¼ö: %d \n", LCount(&list));
+	// í˜„ìž¬ ë¦¬ìŠ¤íŠ¸ì— ì €ìž¥ëœ ë°ì´í„° ìˆ˜ ì¶œë ¥
+	printf("í˜„ìž¬ ë°ì´í„°ì˜ ìˆ˜: %d \n", LCount(&list));
 
-	if(LFirst(&list, &data))
+	// ì „ì²´ ë°ì´í„° ì¶œë ¥ (ì•žì—ì„œë¶€í„° ì°¨ë¡€ëŒ€ë¡œ ìˆœíšŒ)
+	if (LFirst(&list, &data))
 	{
 		printf("%d ", data);
-		
-		while(LNext(&list, &data)) 
+
+		while (LNext(&list, &data))
 			printf("%d ", data);
 	}
 	printf("\n\n");
 
-	// ¼ýÀÚ 22À» °Ë»öÇÏ¿© ¸ðµÎ »èÁ¦ ////////////
-	if(LFirst(&list, &data))
+	// ë°ì´í„° ê°’ì´ 22ì¸ ë…¸ë“œë¥¼ ëª¨ë‘ ì‚­ì œ
+	if (LFirst(&list, &data))
 	{
-		if(data == 22)
+		if (data == 22)
 			LRemove(&list);
-		
-		while(LNext(&list, &data))
+
+		while (LNext(&list, &data))
 		{
-			if(data == 22)
+			if (data == 22)
 				LRemove(&list);
 		}
 	}
 
-	// »èÁ¦ ÈÄ ÀúÀåµÈ µ¥ÀÌÅÍ ÀüÃ¼ Ãâ·Â ////////////
-	printf("ÇöÀç µ¥ÀÌÅÍÀÇ ¼ö: %d \n", LCount(&list));
+	// ì‚­ì œ í›„ ë‚¨ì•„ìžˆëŠ” ì „ì²´ ë°ì´í„° ì¶œë ¥
+	printf("í˜„ìž¬ ë°ì´í„°ì˜ ìˆ˜: %d \n", LCount(&list));
 
-	if(LFirst(&list, &data))
+	if (LFirst(&list, &data))
 	{
 		printf("%d ", data);
-		
-		while(LNext(&list, &data))
+
+		while (LNext(&list, &data))
 			printf("%d ", data);
 	}
 	printf("\n\n");
+
 	return 0;
 }

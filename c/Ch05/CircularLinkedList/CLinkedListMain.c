@@ -3,58 +3,62 @@
 
 int main(void)
 {
-	// ¿øÇü ¿¬°á ¸®½ºÆ®ÀÇ »ı¼º ¹× ÃÊ±âÈ­ ///////
+	// ë¦¬ìŠ¤íŠ¸ ìƒì„± ë° ì´ˆê¸°í™”
 	List list;
 	int data, i, nodeNum;
-	ListInit(&list);
+	ListInit(&list);  // tail, cur, beforeë¥¼ NULLë¡œ ì´ˆê¸°í™”
 
-	// ¸®½ºÆ®¿¡ 5°³ÀÇ µ¥ÀÌÅÍ¸¦ ÀúÀå /////// 
-	LInsert(&list, 3);
-	LInsert(&list, 4);
-	LInsert(&list, 5);
-	LInsertFront(&list, 2);
-	LInsertFront(&list, 1);
-	
-	// ¸®½ºÆ®¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ ¿¬¼Ó 3È¸ Ãâ·Â ///////
-	if(LFirst(&list, &data))
+	// ë°ì´í„° ì‚½ì…: ë’·ë¶€ë¶„ ì‚½ì… 3ê°œ, ì•ë¶€ë¶„ ì‚½ì… 2ê°œ (1~5)
+	LInsert(&list, 3);      // tail ë’¤ ì‚½ì… â†’ 3
+	LInsert(&list, 4);      // tail ë’¤ ì‚½ì… â†’ 3 4
+	LInsert(&list, 5);      // tail ë’¤ ì‚½ì… â†’ 3 4 5
+	LInsertFront(&list, 2); // head ì• ì‚½ì… â†’ 2 3 4 5
+	LInsertFront(&list, 1); // head ì• ì‚½ì… â†’ 1 2 3 4 5
+
+	// ë¦¬ìŠ¤íŠ¸ ìˆœíšŒ ì¶œë ¥ (ì „ì²´ ë°ì´í„° 3íšŒ ë°˜ë³µ ì¶œë ¥)
+	if (LFirst(&list, &data))
 	{
-		printf("%d ", data);
-		
-		for(i=0; i<LCount(&list)*3-1; i++)
+		printf("%d ", data);  // ì²« ë²ˆì§¸ ë…¸ë“œ ì¶œë ¥
+
+		// ì´ ë…¸ë“œ ìˆ˜ * 3 - 1 ë§Œí¼ ìˆœíšŒí•˜ë©° ì¶œë ¥
+		for (i = 0; i < LCount(&list) * 3 - 1; i++)
 		{
-			if(LNext(&list, &data))
+			if (LNext(&list, &data))
 				printf("%d ", data);
 		}
 	}
 	printf("\n");
 
-	// 2ÀÇ ¹è¼ö¸¦ Ã£¾Æ¼­ ¸ğµÎ »èÁ¦ ///////
-	nodeNum = LCount(&list);
+	// ì§ìˆ˜ ê°’ ë…¸ë“œë¥¼ ì°¾ì•„ ëª¨ë‘ ì‚­ì œ
+	nodeNum = LCount(&list);  // ì‚­ì œ ì „ ë…¸ë“œ ê°œìˆ˜ ì €ì¥
 
-	if(nodeNum != 0)
+	if (nodeNum != 0)
 	{
-		LFirst(&list, &data);
-		if(data%2 == 0)
+		LFirst(&list, &data);  // ì²« ë…¸ë“œë¶€í„° íƒìƒ‰ ì‹œì‘
+
+		if (data % 2 == 0)     // ì§ìˆ˜ë©´ ì‚­ì œ
 			LRemove(&list);
-		
-		for(i=0; i < nodeNum-1; i++)
+
+		for (i = 0; i < nodeNum - 1; i++)
 		{
 			LNext(&list, &data);
-			if(data%2 == 0)
+
+			if (data % 2 == 0) // ì§ìˆ˜ë©´ ì‚­ì œ
 				LRemove(&list);
 		}
 	}
 
-	// ÀüÃ¼ µ¥ÀÌÅÍ 1È¸ Ãâ·Â ///////
-	if(LFirst(&list, &data))
+	// ì‚­ì œ í›„ ë¦¬ìŠ¤íŠ¸ ì „ì²´ í•œ ë°”í€´ ìˆœíšŒ ì¶œë ¥
+	if (LFirst(&list, &data))
 	{
 		printf("%d ", data);
-		
-		for(i=0; i<LCount(&list)-1; i++)
+
+		for (i = 0; i < LCount(&list) - 1; i++)
 		{
-			if(LNext(&list, &data))
+			if (LNext(&list, &data))
 				printf("%d ", data);
 		}
 	}
+
 	return 0;
 }

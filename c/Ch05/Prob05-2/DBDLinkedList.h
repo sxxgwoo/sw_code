@@ -16,7 +16,7 @@ typedef struct _node
 typedef struct _dbDLinkedList
 {
 	Node * head;
-	Node * tail;
+	Node * tail; //추가
 	Node * cur;
 	int numOfData;
 } DBDLinkedList;
