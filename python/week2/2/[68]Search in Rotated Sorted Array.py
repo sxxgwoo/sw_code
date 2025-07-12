@@ -21,3 +21,6 @@ Input: nums = [3,5,6,0,1,2], target = 4
 
 Output: -1
 '''
+
+if __name__=="__main__":
+    sol = Solution()

@@ -27,3 +27,6 @@ Input: head = [2,4,6,8,10]
 
 Output: [2,10,4,8,6]
 '''
+
+if __name__=="__main__":
+    sol = Solution()

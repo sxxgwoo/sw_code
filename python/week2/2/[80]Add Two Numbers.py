@@ -23,3 +23,6 @@ Input: l1 = [9], l2 = [9]
 
 Output: [8,1]
 '''
+
+if __name__=="__main__":
+    sol = Solution()

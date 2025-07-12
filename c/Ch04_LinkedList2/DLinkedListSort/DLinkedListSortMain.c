@@ -21,11 +21,12 @@ int main(void)
 	SetSortRule(&list, WhoIsPrecede);
 
 	// 데이터 삽입 (정렬 기준에 따라 자동 정렬됨)
+	LInsert(&list, 33);
 	LInsert(&list, 11);  
 	LInsert(&list, 11);
 	LInsert(&list, 22);  
 	LInsert(&list, 22);
-	LInsert(&list, 33);
+	
 
 	// 현재 리스트에 저장된 데이터 수 출력
 	printf("현재 데이터의 수: %d \n", LCount(&list));

@@ -13,3 +13,6 @@ Input: head = []
 
 Output: []
 '''
+
+if __name__=="__main__":
+    sol = Solution()

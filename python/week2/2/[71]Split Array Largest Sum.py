@@ -20,3 +20,6 @@ Input: nums = [1,0,2,3,5], k = 4
 Output: 5
 Explanation: The best way is to split into [1], [0,2], [3] and [5], where the largest sum among the two subarrays is only 5.
 '''
+
+if __name__=="__main__":
+    sol = Solution()

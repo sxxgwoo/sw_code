@@ -19,3 +19,33 @@ Input: piles = [25,10,23,4], h = 4
 
 Output: 25
 '''
+
+class Solution:
+    def minEatingSpeed(self, piles: list[int], h: int) -> int:
+        l, r = 1, max(piles)
+        res = r
+
+        while l <= r:
+            k = (l + r) // 2
+
+            totalTime = 0
+            for p in piles:
+                if p%k==0:
+                    totalTime += p/k
+                else:
+                    totalTime += p/k+1
+            if totalTime <= h:
+                res = k
+                r = k - 1
+            else:
+                l = k + 1
+        return res
+            
+
+if __name__=="__main__":
+    sol = Solution()
+    piles = [25,10,23,4]
+    h = 4
+    # piles = [1,4,3,2]
+    # h = 9
+    print(sol.minEatingSpeed(piles,h))

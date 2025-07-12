@@ -32,3 +32,6 @@ myCircularQueue.deQueue(); // return True
 myCircularQueue.enQueue(4); // return True
 myCircularQueue.Rear(); // return 4
 '''
+
+if __name__=="__main__":
+    sol = Solution()
