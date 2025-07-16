@@ -1,5 +1,7 @@
 '''
 Koko Eating Bananas
+주어진 바나나 더미 배열 piles와 제한 시간 h가 주어졌을 때, 매 시간 한 더미에서만 바나나를 먹을 수 있을 때 모든 바나나를 h시간 안에 먹기 위해 필요한 최소한의 시간당 바나나 섭취량 k를 구하는 문제
+
 You are given an integer array piles where piles[i] is the number of bananas in the ith pile. You are also given an integer h, which represents the number of hours you have to eat all the bananas.
 
 You may decide your bananas-per-hour eating rate of k. Each hour, you may choose a pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, you may finish eating the pile but you can not eat from another pile in the same hour.
@@ -21,6 +23,8 @@ Output: 25
 '''
 
 class Solution:
+
+    # Binary search
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
         l, r = 1, max(piles)
         res = r
