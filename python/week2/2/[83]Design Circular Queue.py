@@ -32,6 +32,63 @@ myCircularQueue.deQueue(); // return True
 myCircularQueue.enQueue(4); // return True
 myCircularQueue.Rear(); // return 4
 '''
+class MyCircularQueue:
 
-if __name__=="__main__":
-    sol = Solution()
+    def __init__(self, k: int):
+        self.q = []
+        self.k = k
+
+    def enQueue(self, value: int) -> bool:
+        if len(self.q) == self.k:
+            return False
+        self.q.append(value)
+        return True
+
+    def deQueue(self) -> bool:
+        if not self.q:
+            return False
+        self.q.pop(0)
+        return True
+
+    def Front(self) -> int:
+        if self.q:
+            return self.q[0]
+        return -1
+
+    def Rear(self) -> int:
+        if self.q:
+            return self.q[-1]
+        return -1
+
+    def isEmpty(self) -> bool:
+        return len(self.q) == 0
+
+    def isFull(self) -> bool:
+        return len(self.q) == self.k
+
+
+if __name__ == "__main__":
+    cmds = ["MyCircularQueue", "enQueue", "enQueue", "enQueue", "enQueue", "Rear", "isFull", "deQueue", "enQueue", "Rear"]
+    args = [[3], [1], [2], [3], [4], [], [], [], [4], []]
+
+    res = []
+    obj = None
+
+    for cmd, arg in zip(cmds, args):
+        if cmd == "MyCircularQueue":
+            obj = MyCircularQueue(*arg)
+            res.append(None)  # 생성자는 null
+        elif cmd == "enQueue":
+            res.append(obj.enQueue(*arg))
+        elif cmd == "deQueue":
+            res.append(obj.deQueue())
+        elif cmd == "Front":
+            res.append(obj.Front())
+        elif cmd == "Rear":
+            res.append(obj.Rear())
+        elif cmd == "isEmpty":
+            res.append(obj.isEmpty())
+        elif cmd == "isFull":
+            res.append(obj.isFull())
+
+    print(res)
