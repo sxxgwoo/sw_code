@@ -3,61 +3,60 @@
 #include <time.h>
 #include "CircularQueue.h"
 
-#define	CUS_COME_TERM	15		// °í°´ÀÇ ÁÖ¹® °£°İ: ÃÊ ´ÜÀ§
+#define CUS_COME_TERM 15
 
-#define CHE_BUR		0		// Ä¡Áî¹ö°Å »ó¼ö 
-#define BUL_BUR		1		// ºÒ°í±â¹ö°Å »ó¼ö
-#define DUB_BUR		2		// ´õºí¹ö°Å »ó¼ö
+#define CHE_BUR 0
+#define BUL_BUR 1
+#define DUB_BUR 2
 
-#define CHE_TERM	12		// Ä¡Áî¹ö°Å Á¦ÀÛ ½Ã°£: ÃÊ ´ÜÀ§
-#define BUL_TERM	15		// ºÒ°í±â¹ö°Å Á¦ÀÛ ½Ã°£: ÃÊ ´ÜÀ§
-#define DUB_TERM	24		// ´õºí¹ö°Å Á¦ÀÛ ½Ã°£: ÃÊ ´ÜÀ§
+#define CHE_TERM 12
+#define BUL_TERM 15
+#define DUB_TERM 24
 
 int main(void)
 {
-	int makeProc=0;			// ÇÜ¹ö°Å Á¦ÀÛ ÁøÇà»óÈ²
-	int cheOrder=0, bulOrder=0, dubOrder=0;
-	int sec;
+    int makeProc = 0;   // ì¡°ë¦¬ ì¤‘ì¸ í–„ë²„ê±°ê°€ ì–¼ë§ˆë‚˜ ì‹œê°„ì´ ë‚¨ì•˜ëŠ”ì§€ ì €ì¥
+    int cheOrder = 0, bulOrder = 0, dubOrder = 0;  // ì£¼ë¬¸ ë°›ì€ í–„ë²„ê±° ì¢…ë¥˜ë³„ ê°œìˆ˜ ì €ì¥
+    int sec = 0;  // ì‹œê°„ ì €ì¥
 
-	Queue que;
+    Queue que;
+    QueueInit(&que);
 
-	QueueInit(&que);
-	srand(time(NULL));
+    srand(time(NULL));
 
-	// ¾Æ·¡ for¹®ÀÇ 1È¸ È¸ÀüÀº 1ÃÊÀÇ ½Ã°£ Èå¸§À» ÀÇ¹ÌÇÔ
-	for(sec=0; sec<3600; sec++)
-	{
-		if(sec % CUS_COME_TERM == 0) 
-		{
-			switch(rand() % 3)
-			{
-			case CHE_BUR:
-				Enqueue(&que, CHE_TERM);
-				cheOrder += 1;
-				break;
+    // ì•„ë˜ forë¬¸ì˜ 1íšŒ íšŒì „ì€ 1ì´ˆì˜ ì‹œê°„ íë¦„ì„ ì˜ë¯¸í•¨
+    for(sec = 0; sec < 3600; sec++)
+    {
+        if(sec % CUS_COME_TERM == 0)    // ì†ë‹˜ì´ ë“¤ì–´ì˜¤ëŠ” ì‹œê°„
+        {
+            switch(rand() % 3)  // ì†ë‹˜ì´ ì£¼ë¬¸í•˜ëŠ” ë²„ê±° ì¢…ë¥˜ (ëœë¤ ì„ íƒ)
+            {
+                case 0:
+                    Enqueue(&que, CHE_TERM);  // ì¹˜ì¦ˆë²„ê±° ì£¼ë¬¸
+                    cheOrder++;
+                    break;
+                case 1:
+                    Enqueue(&que, BUL_TERM);  // ë¶ˆê³ ê¸°ë²„ê±° ì£¼ë¬¸
+                    bulOrder++;
+                    break;
+                case 2:
+                    Enqueue(&que, DUB_TERM);  // ë”ë¸”ë²„ê±° ì£¼ë¬¸
+                    dubOrder++;
+                    break;
+            }
+        }
 
-			case BUL_BUR:
-				Enqueue(&que, BUL_TERM);
-				bulOrder += 1;
-				break;
+        if(makeProc <= 0 && !QIsEmpty(&que))  // ì¡°ë¦¬ ì¤‘ì¸ í–„ë²„ê±°ê°€ ì—†ê³  ì£¼ë¬¸ì´ ìˆëŠ” ê²½ìš°
+            makeProc = Dequeue(&que);  // ì¡°ë¦¬ ì¤‘ì¸ í–„ë²„ê±° ì‹œê°„ ì €ì¥
+        
+        makeProc--;  // ì¡°ë¦¬ ì¤‘ì¸ í–„ë²„ê±° ì‹œê°„ ê°ì†Œ
+    }
 
-			case DUB_BUR:
-				Enqueue(&que, DUB_TERM);
-				dubOrder += 1;
-				break;
-			}
-		}
+    printf("Simulation Report! \n");
+    printf(" - Cheese burger: %d \n", cheOrder);
+    printf(" - Bulgogi burger: %d \n", bulOrder);
+    printf(" - Double burger: %d \n", dubOrder);
+    printf(" - Waiting room size: %d \n", QUEUE_LEN);
 
-		if(makeProc==0 && !QIsEmpty(&que))
-			makeProc = Dequeue(&que);
-
-		makeProc--;
-	}
-
-	printf("Simulation Report! \n", QUE_LEN);
-	printf(" - Cheese burger: %d \n", cheOrder);
-	printf(" - Bulgogi burger: %d \n", bulOrder);
-	printf(" - Double burger: %d \n", dubOrder);
-	printf(" - Waiting room size: %d \n", QUE_LEN);
-	return 0;
+    return 0;
 }
