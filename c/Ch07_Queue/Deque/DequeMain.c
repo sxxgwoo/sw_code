@@ -3,37 +3,39 @@
 
 int main(void)
 {
-	// Deque¿« ª˝º∫ π◊ √ ±‚»≠ ///////
-	Deque deq;
-	DequeInit(&deq);
+    // Deque ÏÉùÏÑ± Î∞è Ï¥àÍ∏∞Ìôî
+    Deque deq;
+    DequeInit(&deq);
 
-	// µ•¿Ã≈Õ ≥÷±‚ 1¬˜ ///////
-	DQAddFirst(&deq, 3); 
-	DQAddFirst(&deq, 2); 
-	DQAddFirst(&deq, 1); 
+    // Îç∞Ïù¥ÌÑ∞ ÎÑ£Í∏∞ 1Ï∞®
+    DQAddFirst(&deq, 3);
+    DQAddFirst(&deq, 2);
+    DQAddFirst(&deq, 1);
 
-	DQAddLast(&deq, 4); 
-	DQAddLast(&deq, 5); 
-	DQAddLast(&deq, 6);
+    DQAddLast(&deq, 4);
+    DQAddLast(&deq, 5);
+    DQAddLast(&deq, 6);
 
-	// µ•¿Ã≈Õ ≤®≥ª±‚ 1¬˜ ///////
-	while(!DQIsEmpty(&deq))
-		printf("%d ", DQRemoveFirst(&deq));
+    // Îç∞Ïù¥ÌÑ∞ Í∫ºÎÇ¥Í∏∞ 1Ï∞®
+    while(!DQIsEmpty(&deq))
+        printf("%d ", DQRemoveFirst(&deq));
 
-	printf("\n");
+    printf("\n");
+    
+    // Îç∞Ïù¥ÌÑ∞ ÎÑ£Í∏∞ 2Ï∞®
+    DQAddFirst(&deq, 3);
+    DQAddFirst(&deq, 2);
+    DQAddFirst(&deq, 1);
 
-	// µ•¿Ã≈Õ ≥÷±‚ 2¬˜ ///////
-	DQAddFirst(&deq, 3); 
-	DQAddFirst(&deq, 2); 
-	DQAddFirst(&deq, 1);
-	
-	DQAddLast(&deq, 4); 
-	DQAddLast(&deq, 5); 
-	DQAddLast(&deq, 6);
+    DQAddLast(&deq, 4);
+    DQAddLast(&deq, 5);
+    DQAddLast(&deq, 6);
+    
+    // Îç∞Ïù¥ÌÑ∞ Í∫ºÎÇ¥Í∏∞ 2Ï∞®
+    while(!DQIsEmpty(&deq))
+        printf("%d ", DQRemoveLast(&deq));
 
-	// µ•¿Ã≈Õ ≤®≥ª±‚ 2¬˜ ///////
-	while(!DQIsEmpty(&deq))
-		printf("%d ", DQRemoveLast(&deq));
+    printf("\n");
 
-	return 0;
+    return 0;
 }

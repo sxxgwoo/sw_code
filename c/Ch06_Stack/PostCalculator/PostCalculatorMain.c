@@ -3,11 +3,11 @@
 
 int main(void)
 {
-	char postExp1[] = "42*8+";
-	char postExp2[] = "123+*4/";
+    char exp1[] = "42*8+";
+    char exp2[] = "123+*4/";
 
-	printf("%s = %d \n", postExp1, EvalRPNExp(postExp1));
-	printf("%s = %d \n", postExp2, EvalRPNExp(postExp2));
+    printf("%s = %d \n", exp1, EvalRPNExp(exp1));
+    printf("%s = %d \n", exp2, EvalRPNExp(exp2));
 
-	return 0;
+    return 0;
 }

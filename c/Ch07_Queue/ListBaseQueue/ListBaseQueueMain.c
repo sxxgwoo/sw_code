@@ -3,18 +3,22 @@
 
 int main(void)
 {
-	// Queue¿« ª˝º∫ π◊ √ ±‚»≠ ///////
-	Queue q;
-	QueueInit(&q);
+    // QueueÏùò ÏÉùÏÑ± Î∞è Ï¥àÍ∏∞Ìôî
+    Queue q;
+    QueueInit(&q);
 
-	// µ•¿Ã≈Õ ≥÷±‚ ///////
-	Enqueue(&q, 1);  Enqueue(&q, 2);
-	Enqueue(&q, 3);  Enqueue(&q, 4);
-	Enqueue(&q, 5);
+    // Îç∞Ïù¥ÌÑ∞ ÎÑ£Í∏∞
+    Enqueue(&q, 1);
+    Enqueue(&q, 2);
+    Enqueue(&q, 3);
+    Enqueue(&q, 4);
+    Enqueue(&q, 5);
 
-	// µ•¿Ã≈Õ ≤®≥ª±‚ ///////
-	while(!QIsEmpty(&q))
-		printf("%d ", Dequeue(&q)); 
+    // Îç∞Ïù¥ÌÑ∞ Í∫ºÎÇ¥Í∏∞
+    while(!QIsEmpty(&q))
+        printf("%d ", Dequeue(&q));
 
-	return 0;
+    printf("\n");
+
+    return 0;
 }
