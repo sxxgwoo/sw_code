@@ -19,6 +19,13 @@ int main(void)
 	SetData(bt5, 5);
 	SetData(bt6, 6);
 
+    //   binary tree   //
+    //         1       //
+    //       /   \     //
+    //      2     3    //
+    //     / \     \   //
+    //    4   5     6  //
+
 	MakeLeftSubTree(bt1, bt2);
 	MakeRightSubTree(bt1, bt3);
 	MakeLeftSubTree(bt2, bt4);

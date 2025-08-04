@@ -129,5 +129,5 @@ if __name__ == "__main__":
 
     deserialized_root = codec.deserialize(serialized)
     re_serialized = codec.serialize(deserialized_root)
-    print("Re-Serialized:", re_serialized)  # 원본과 같아야 함
+    print("Re-Serialized:", re_serialized)
     

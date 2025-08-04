@@ -6,16 +6,16 @@ int main(void)
 	char exp[] = "12+7*";
 	BTreeNode * eTree = MakeExpTree(exp);
 
-	printf("ÀüÀ§ Ç¥±â¹ıÀÇ ¼ö½Ä: ");
+	printf("ì „ìœ„ í‘œê¸°ë²•ì˜ ìˆ˜ì‹: ");
 	ShowPrefixTypeExp(eTree); printf("\n");
 
-	printf("ÁßÀ§ Ç¥±â¹ıÀÇ ¼ö½Ä: ");
+	printf("ì¤‘ìœ„ í‘œê¸°ë²•ì˜ ìˆ˜ì‹: ");
 	ShowInfixTypeExp(eTree); printf("\n");
 
-	printf("ÈÄÀ§ Ç¥±â¹ıÀÇ ¼ö½Ä: ");
+	printf("í›„ìœ„ í‘œê¸°ë²•ì˜ ìˆ˜ì‹: ");
 	ShowPostfixTypeExp(eTree); printf("\n");
 
-	printf("¿¬»êÀÇ °á°ú: %d \n", EvaluateExpTree(eTree));
+	printf("ì—°ì‚°ì˜ ê²°ê³¼: %d \n", EvaluateExpTree(eTree));
 
 	return 0;
 }

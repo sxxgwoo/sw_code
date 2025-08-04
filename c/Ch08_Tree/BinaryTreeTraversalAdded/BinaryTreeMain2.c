@@ -19,17 +19,24 @@ int main(void)
 	SetData(bt5, 5);
 	SetData(bt6, 6);
 
+    //   binary tree   //
+    //         1       //
+    //       /   \     //
+    //      2     3    //
+    //     / \     \   //
+    //    4   5     6  //
+
 	MakeLeftSubTree(bt1, bt2);
 	MakeRightSubTree(bt1, bt3);
 	MakeLeftSubTree(bt2, bt4);
 	MakeRightSubTree(bt2, bt5);
 	MakeRightSubTree(bt3, bt6);
 
-	PreorderTraverse(bt1, ShowIntData); 
+	PreorderTraverse(bt1, ShowIntData);   // 출력: 1 2 4 5 3 6
 	printf("\n");
-	InorderTraverse(bt1, ShowIntData);
+	InorderTraverse(bt1, ShowIntData);    // 출력: 4 2 5 1 3 6
 	printf("\n");
-	PostorderTraverse(bt1, ShowIntData);
+	PostorderTraverse(bt1, ShowIntData);  // 출력: 4 5 2 6 3 1
 	printf("\n");
 
 	return 0;

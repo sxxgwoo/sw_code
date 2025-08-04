@@ -31,6 +31,42 @@ twitter.getNewsFeed(2);   // User 2's news feed should still only contain their 
 twitter.unfollow(1, 2);   // User 1 follows user 2.
 twitter.getNewsFeed(1);   // User 1's news feed should only contain their own tweets -> [10].
 '''
-if __name__=="__main__":
-    sol = Solution()
+from collections import defaultdict
+
+class Twitter:
+    def __init__(self):
+        self.time = 0  # 타임스탬프 증가용
+        self.followMap = defaultdict(set)  # 팔로우 관계
+        self.tweetMap = defaultdict(list)  # 유저 별 트윗 저장
+
+    def postTweet(self, userId: int, tweetId: int) -> None:
+        self.tweetMap[userId].append((self.time, tweetId))
+        self.time += 1
+
+    def getNewsFeed(self, userId: int) -> list[int]:
+        feed = self.tweetMap[userId][:]  # 자신의 트윗 포함
+        for followeeId in self.followMap[userId]:
+            feed.extend(self.tweetMap[followeeId])  # 팔로우한 유저의 트윗 추가
+        feed.sort(key=lambda x: -x[0])  # 시간 기준 정렬 (최신순)
+        return [tweetId for _, tweetId in feed[:10]]  # 최신 10개 트윗 ID 반환
+
+    def follow(self, followerId: int, followeeId: int) -> None:
+        if followerId != followeeId:
+            self.followMap[followerId].add(followeeId)
+
+    def unfollow(self, followerId: int, followeeId: int) -> None:
+        self.followMap[followerId].discard(followeeId)
+
+# 실행 예시
+if __name__ == "__main__":
+    twitter = Twitter()
+    twitter.postTweet(1, 10)              # User 1 posts tweet 10
+    twitter.postTweet(2, 20)              # User 2 posts tweet 20
+    print(twitter.getNewsFeed(1))         # [10]
+    print(twitter.getNewsFeed(2))         # [20]
+    twitter.follow(1, 2)                  # User 1 follows User 2
+    print(twitter.getNewsFeed(1))         # [20, 10]
+    print(twitter.getNewsFeed(2))         # [20]
+    twitter.unfollow(1, 2)                # User 1 unfollows User 2
+    print(twitter.getNewsFeed(1))         # [10]
     
