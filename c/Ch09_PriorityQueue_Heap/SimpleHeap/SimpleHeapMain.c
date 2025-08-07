@@ -16,6 +16,7 @@ int main(void)
 	HInsert(&heap, 'C', 3);
 	printf("%c \n", HDelete(&heap));
 
+	printf("남은 데이터\n");
 	while(!HIsEmpty(&heap))
 		printf("%c \n", HDelete(&heap));
 
