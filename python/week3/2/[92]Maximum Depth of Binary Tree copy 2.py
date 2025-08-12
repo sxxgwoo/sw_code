@@ -20,7 +20,7 @@ Output: 0
 '''
 # from collections import deque
 
-# 간단한 Queue 클래스 구현 (FIFO)
+# deque구현 간단한 Queue 클래스 구현 (FIFO)
 class Queue:
     def __init__(self):
         self.data = []
