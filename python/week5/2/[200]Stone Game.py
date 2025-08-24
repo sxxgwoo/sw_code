@@ -21,5 +21,46 @@ Input: piles = [2,1]
 
 Output: true
 '''
+class Solution:
+    #1. Dynamic Programming (Top-Down)
+    def stoneGame(self, piles: list[int]) -> bool:
+        dp = {}
+
+        def dfs(l, r):
+            if l > r:
+                return 0
+            if (l, r) in dp:
+                return dp[(l, r)]
+            even = (r - l) % 2 == 0
+            left = piles[l] if even else 0
+            right = piles[r] if even else 0
+            dp[(l, r)] = max(dfs(l + 1, r) + left, dfs(l, r - 1) + right)
+            return dp[(l, r)]
+
+        total = sum(piles)
+        alice_score = dfs(0, len(piles) - 1)
+        return alice_score > total - alice_score
+    
+    #2.Dynamic Programming (Bottom-Up)
+    def stoneGame(self, piles: list[int]) -> bool:
+        n = len(piles)
+        dp = [[0] * n for _ in range(n)]
+
+        for l in range(n - 1, -1, -1):
+            for r in range(l, n):
+                even = (r - l) % 2 == 0
+                left = piles[l] if even else 0
+                right = piles[r] if even else 0
+                if l == r:
+                    dp[l][r] = left
+                else:
+                    dp[l][r] = max(dp[l + 1][r] + left, dp[l][r - 1] + right)
+
+        total = sum(piles)
+        alice_score = dp[0][n - 1]
+        return alice_score > total - alice_score
+    
 if __name__ == "__main__":
     sol = Solution()
+    piles = [1,2,3,1]
+    print(sol.stoneGame(piles))
